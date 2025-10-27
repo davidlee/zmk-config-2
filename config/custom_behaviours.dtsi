@@ -47,15 +47,6 @@
   // hold-trigger-key-positions = <0>;
 };
 
-/ { // TODO: unused
-    new_sentence: new_sentence {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      wait-ms = <5>;
-      tap-ms = <5>;
-      bindings = <&macro_tap &kp DOT &kp SPACE>, <&sk LSHFT>;
-    };
-};
 
 /*
 * Home Row Mods
@@ -64,9 +55,9 @@
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; \
     flavor = "balanced";                       \
-    tapping-term-ms = <TAPPING_TERM_MS>;       \
-    quick-tap-ms = <QUICK_TAP_SHORT>;          \
-    require-prior-idle-ms = <PRIOR_IDLE_MS>;   \
+    tapping-term-ms       = <190>;             \
+    quick-tap-ms          = <190>;             \
+    require-prior-idle-ms = <190>;             \
     hold-trigger-on-release;                   \
     hold-trigger-key-positions = <TRIGGER_POS>;)
 
@@ -86,14 +77,7 @@ ZMK_BEHAVIOR(th, hold_tap,
     quick-tap-ms = <QUICK_TAP_MS>; // tap-then-tap-and-hold for space / backspace
 )
 
-/* auto-shift */
-#define AS(keycode) &as LS(keycode) keycode
-ZMK_BEHAVIOR(as, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <120>;
-    bindings = <&kp>, <&kp>;
-)
-
+// NAV_KEY
 ZMK_BEHAVIOR(mo_sk, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <TAPPING_TERM_SHORT>;
@@ -105,25 +89,11 @@ ZMK_BEHAVIOR(mo_sk, hold_tap,
   /delete-property/ ignore-modifiers;
 };
 
-/*
-* https://github.com/urob/zmk-auto-layer/tree/main
-&num_word {
-  continue-list = <BSPC DEL DOT COMMA>;
-};
-*/
-
 //
-// Tap Dance keys
+// Tap Dance keys :: GAMING
 //
 
-// DEF layer
-ZMK_BEHAVIOR(fn_esc__cmd, tap_dance,
-  tapping-term-ms = <180>;
-  bindings = <&lt FN ESC>, <&kp LCMD>;
-)
-
-// GAM layer
-
+// GAM ===
 // tap: spare
 // tap-hold: Alt
 // tap tap-hold: NUM layer
@@ -132,17 +102,10 @@ ZMK_BEHAVIOR(alt__num, tap_dance,
   bindings = <&kp LALT>, <&mo NUM>;
 )
 
+// GAM ===
 // tap: F5
 // tap tap: sticky NUM
 ZMK_BEHAVIOR(f5__num_sl, tap_dance,
   tapping-term-ms = <180>;
   bindings = <&kp F5>, <&sl NUM>;
 )
-
-// one tap: num-word
-// two taps: exit to DEF
-ZMK_BEHAVIOR(td_rth3, tap_dance,
-  tapping-term-ms = <180>;
-  bindings = <&num_word NUM>, <&to DEF>;
-)
-
