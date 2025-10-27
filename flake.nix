@@ -12,7 +12,11 @@
     zephyr-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, zephyr-nix, ... }: let
+  outputs = {
+    nixpkgs,
+    zephyr-nix,
+    ...
+  }: let
     systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
@@ -23,29 +27,29 @@
         keymap_drawer = pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix {};
       in {
         default = pkgs.mkShellNoCC {
-          packages =
-            [
-              zephyr.pythonEnv
-              (zephyr.sdk-0_16.override {targets = ["arm-zephyr-eabi"];})
+          packages = [
+            zephyr.pythonEnv
+            (zephyr.sdk-0_16.override {targets = ["arm-zephyr-eabi"];})
 
-              pkgs.cmake
-              pkgs.dtc
-              pkgs.ninja
+            pkgs.cmake
+            pkgs.dtc
+            pkgs.gcc
+            pkgs.ninja
 
-              pkgs.just
-              pkgs.yq # Make sure yq resolves to python-yq.
+            pkgs.just
+            pkgs.yq # Make sure yq resolves to python-yq.
 
-              keymap_drawer
+            keymap_drawer
 
-              # -- Used by just_recipes and west_commands. Most systems already have them. --
-              # pkgs.gawk
-              # pkgs.unixtools.column
-              # pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
-              # pkgs.diffutils
-              # pkgs.findutils # find, xargs
-              # pkgs.gnugrep
-              # pkgs.gnused
-            ];
+            # -- Used by just_recipes and west_commands. Most systems already have them. --
+            # pkgs.gawk
+            # pkgs.unixtools.column
+            # pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
+            # pkgs.diffutils
+            # pkgs.findutils # find, xargs
+            # pkgs.gnugrep
+            # pkgs.gnused
+          ];
 
           shellHook = ''
             export ZMK_BUILD_DIR=$(pwd)/.build;
