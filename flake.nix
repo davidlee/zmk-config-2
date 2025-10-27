@@ -33,7 +33,7 @@
 
             pkgs.cmake
             pkgs.dtc
-            # pkgs.gcc
+            pkgs.gcc
             pkgs.ninja
 
             pkgs.just
