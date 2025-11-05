@@ -18,10 +18,7 @@
 #define FN_ESC   &lt FN ESCAPE
 #define NUM_SPC  &lt NUM SPACE
 #define CTL_TAB  &mt LCTRL TAB
-// #define RTH3     &td_rth3
-// #define NUM_WORD &td_rth3
-// #define DEF_HPR &to_kp DEF HYPER
-#define MIN_ESC &lt MINUS ESC
+#define FN_ESC &lt FN ESC
 
 // #define NAV_KEY &mo NAV
 //

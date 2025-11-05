@@ -12,6 +12,8 @@
 #     shield: reviung41
 #
 ---
+# board: ["eyelash_corne_left"]
+# shield: [ "nice_view" ]
 include:
   # - board: planck_rev6
   # - board: corneish_zen_v2_left
@@ -24,8 +26,5 @@ include:
     shield: nice_view
   # - board: eyelash_corne_left
   #   shield: nice_view
-  #   snippet: studio-rpc-usb-uart
-  #   cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
-  #   artifact-name: eyelash_corne_studio_left
   # - board: eyelash_corne_left
   #   shield: settings_reset

@@ -42,7 +42,7 @@
       GRV_HYP &kp B  &kp L  &kp D  &kp C  &kp V       _UP       &kp J   &kp Y  &kp O    &kp U     &kp COMMA  BSL_HYP
       ESC_MEH _HOME_ROW_MODS_LEFT_        &kp G   _L_ _RT _R_   &kp P   _HOME_ROW_MODS_RIGHT_                SLS_MEH
       CMP_SFT &kp X  &kp Q  &kp M  &kp W  &kp Z   _PP _DN       &kp K   &kp F  &kp SQT  &kp SEMI  &kp DOT    RET_SFT
-                        MIN_ESC  NUM_SPC  CTL_TAB               NAV_KEY BS_SFT &to DEF
+                        FN_ESC  NUM_SPC  CTL_TAB               NAV_KEY BS_SFT &to DEF
        >;
 
       sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;

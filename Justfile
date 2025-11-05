@@ -1,6 +1,9 @@
 default:
     @just --list --unsorted
 
+restore-reset-image:
+  git restore --source 82984eb firmware/settings_reset-eyelash_corne_left-zmk.uf2
+
 config := absolute_path('config')
 build := absolute_path('.build')
 out := absolute_path('firmware')
